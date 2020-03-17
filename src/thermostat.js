@@ -12,6 +12,10 @@ Thermostat.prototype.powerSave = function(choice){
   };
 }
 
+Thermostat.prototype.reset = function(){
+  return this.temperature = 20;
+}
+
 Thermostat.prototype.temperature = function() {
   return 20;
 }

@@ -33,4 +33,11 @@ describe('Thermostat', function(){
     })
   })
 
+  describe('reset', function(){
+    it('can reset to 20', function(){
+      thermostat.reset;
+      expect(thermostat.temperature).toEqual(20);
+    })
+  })
+
 })

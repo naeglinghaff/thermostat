@@ -15,6 +15,10 @@ describe('Thermostat', function(){
     it('can decrease the temperature', function(){
       expect(thermostat.turnDown()).toEqual(19);
     })
+    it('throws error at min temp', function() {
+      thermostat.temperature = 10;
+      expect(function(){ thermostat.turnDown() }).toThrowError("Minimum temperature reached, bitch")
+    })
   })
 
 })

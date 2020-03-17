@@ -40,4 +40,18 @@ describe('Thermostat', function(){
     })
   })
 
+  describe('energyUsage', function(){
+    it('checks enery usage at 20', function(){
+      expect(thermostat.energyUsage()).toEqual('medium-usage');
+    })
+    it('checks energy usage low', function(){
+      thermostat.temperature = 17;
+      expect(thermostat.energyUsage()).toEqual('low-usage')
+    })
+    it('checks enery usage high', function(){
+      thermostat.temperature = 26;
+      expect(thermostat.energyUsage()).toEqual('high-usage');
+    })
+  })
+
 })

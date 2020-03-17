@@ -2,6 +2,20 @@ function Thermostat(){
   this.temperature = 20;
   this.minimumTemperature = 10;
   this.maximumTemperature = 25;
+  this.energyLevel = 'medium-usage'
+}
+
+Thermostat.prototype.energyUsage = function(){
+  if (this.temperature < 18) {
+    this.energyLevel = 'low-usage';
+    return this.energyLevel;
+  } else if (this.temperature < 25) {
+    this.energyLevel = 'medium-usage';
+    return this.energyLevel;
+  } else {
+    this.energyLevel = 'high-usage';
+    return this.energyLevel;
+  }
 }
 
 Thermostat.prototype.powerSave = function(choice){

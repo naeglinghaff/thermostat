@@ -9,8 +9,11 @@ describe('Thermostat', function(){
     it('starts at 20', function(){
       expect(thermostat.temperature).toEqual(20);
     })
-    it('can change the temperature', function(){
+    it('can increase the temperature', function(){
       expect(thermostat.turnUp()).toEqual(21);
+    })
+    it('can decrease the temperature', function(){
+      expect(thermostat.turnDown()).toEqual(19);
     })
   })
 

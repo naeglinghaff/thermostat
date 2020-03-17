@@ -11,3 +11,8 @@ Thermostat.prototype.turnUp = function() {
   this.temperature++;
   return this.temperature;
 }
+
+Thermostat.prototype.turnDown = function() {
+  this.temperature--;
+  return this.temperature;
+}

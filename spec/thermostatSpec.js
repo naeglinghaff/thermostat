@@ -21,4 +21,16 @@ describe('Thermostat', function(){
     })
   })
 
+  describe('power saving', function(){
+    it('changes max temp', function(){
+      thermostat.powerSave('off')
+      expect(thermostat.maximumTemperature).toEqual(32);
+    })
+    it('raises error for max temp', function(){
+      thermostat.powerSave('on');
+      thermostat.temperature = 25;
+      expect(function() { thermostat.turnUp() }).toThrowError("Maximum temperature reached, slut")
+    })
+  })
+
 })

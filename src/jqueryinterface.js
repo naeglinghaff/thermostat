@@ -2,6 +2,7 @@ $(document).ready(function() {
 
   let thermostat = new Thermostat;
   changeValue(thermostat.temperature);
+  $('#power_saving_mode_on').css("background-color", "green");
 
   $("#myButton").click(function (e) {
     alert("Button is Clicked")
@@ -24,6 +25,8 @@ $(document).ready(function() {
   $('#reset').click(function(){
     thermostat.reset();
     changeValue(thermostat.temperature);
+    $('#power_saving_mode_off').css("background-color", "white");
+    $('#power_saving_mode_on').css("background-color", "green")
   })
 
   $("#power_saving_mode_on").click(function() {

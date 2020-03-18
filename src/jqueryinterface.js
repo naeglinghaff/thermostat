@@ -2,7 +2,12 @@ $(document).ready(function() {
 
   let thermostat = new Thermostat;
   changeValue(thermostat.temperature);
+  changeBackground();
   $('#power_saving_mode_on').css("background-color", "green");
+
+  function changeBackground() {
+    $('#energyUsage').attr('class', thermostat.energyUsage());
+  }
 
   $("#myButton").click(function (e) {
     alert("Button is Clicked")
@@ -15,11 +20,13 @@ $(document).ready(function() {
   $("#turn_up").click(function () {
     thermostat.turnUp();
     changeValue(thermostat.temperature);
+    changeBackground();
   });
 
   $("#turn_down").click(function() {
     thermostat.turnDown();
     changeValue(thermostat.temperature);
+    changeBackground();
   });
 
   $('#reset').click(function(){
@@ -27,6 +34,7 @@ $(document).ready(function() {
     changeValue(thermostat.temperature);
     $('#power_saving_mode_off').css("background-color", "white");
     $('#power_saving_mode_on').css("background-color", "green")
+    changeBackground();
   })
 
   $("#power_saving_mode_on").click(function() {

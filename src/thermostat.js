@@ -2,7 +2,7 @@ function Thermostat(){
   this.temperature = 20;
   this.minimumTemperature = 10;
   this.maximumTemperature = 25;
-  this.energyLevel = 'medium-usage'
+  this.energyLevel = 'medium-usage';
 }
 
 Thermostat.prototype.energyUsage = function(){

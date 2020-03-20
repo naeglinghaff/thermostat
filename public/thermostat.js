@@ -54,4 +54,10 @@ energyUsage() {
     $.post("http://localhost:4567/thermostat", { temperature: this.temperature, city: city, powermode: this.powermode } );
   }
 
+  load(callback){
+    $.get("http://localhost:4567/thermostat", function(response) {
+      var data = JSON.parse(response)
+      callback(data);
+    });
+  }
 }

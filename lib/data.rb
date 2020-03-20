@@ -4,6 +4,7 @@ class Data
 
   def self.save_data(temperature, city, powermode)
     connection = PG.connect(dbname: 'thermostat')
+    connection.exec("TRUNCATE data")
     result = connection.exec("INSERT INTO data (temperature, city, powermode) VALUES( #{temperature}, '#{city}', '#{powermode}')")
   end
 

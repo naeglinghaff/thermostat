@@ -5,14 +5,13 @@ $(document).ready(function() {
   changeBackground();
   $('#power_saving_mode_on').css("background-color", "green");
 
-
   function displayWeather(city) {
     var url = 'http://api.openweathermap.org/data/2.5/weather?q=';
     var token = '&appid=09e89fd51851bbc9b7a1475aa2d18166';
     var unit = '&units=metric';
     $.get(url + city + token + unit, function(data) {
     $('#currentWeather').text(data.main.temp);
-  })
+    })
   }
 
   $('#current-city').change(function () {
@@ -23,10 +22,6 @@ $(document).ready(function() {
   function changeBackground() {
     $('#energyUsage').attr('class', thermostat.energyUsage());
   }
-
-  $("#myButton").click(function (e) {
-    alert("Button is Clicked")
-  });
 
   function changeValue(num) {
     $("#temp_display").text(num);

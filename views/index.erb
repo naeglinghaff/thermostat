@@ -1,26 +1,27 @@
 <html>
   <head>
     <script src="jquery-3.4.1.min.js"></script>
-    <link rel="stylesheet" href="style.css">
   </head>
-  <body>
+    <section id ="bg-image" class="medium-bg-image"></section>
+    <body>
+    <section class="bg-text">
     <button id="turn_up">Turn Up</button>
     <button id="turn_down">Turn Down</button>
     <button id="power_saving_mode_on">Power Saving Mode On</button>
     <button id="power_saving_mode_off">Power Saving Mode Off</button>
     <button id="reset">Reset</button>
 
-    <h1>The temperature is: <span id="temp_display"></span></h1>
     <p id="energyUsage">Power Saving Mode</p>
-    <section><h1>Current Weather <span id ="currentWeather"></span> Degrees</h1>
+    <h1>Current Weather <span id ="currentWeather"></span> Degrees</h1>
       <select id="current-city">
          <option value="london">London</option>
          <option value="newyork">New York</option>
          <option value="paris">Paris</option>
          <option value="tokyo">Tokyo</option>
        </select>
+    <h1>The temperature is: <span id="temp_display"></span></h1>
     </section>
-    <div><script src="jqueryinterface.js"></script></div>
+    <div><script src="interface.js"></script></div>
     <div><script src="thermostat.js"></script></div>
   </body>
 </html>

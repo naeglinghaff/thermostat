@@ -1,11 +1,14 @@
-function Thermostat(){
-  this.temperature = 20;
-  this.minimumTemperature = 10;
-  this.maximumTemperature = 25;
+class Thermostat {
+
+  constructor() {
+  this.temperature = 20,
+  this.minimumTemperature = 10,
+  this.maximumTemperature = 25,
+  this.powermode = true,
   this.energyLevel = 'medium-usage';
 }
 
-Thermostat.prototype.energyUsage = function(){
+energyUsage() {
   if (this.temperature < 18) {
     this.energyLevel = 'low-usage';
     return this.energyLevel;
@@ -18,34 +21,37 @@ Thermostat.prototype.energyUsage = function(){
   }
 }
 
-Thermostat.prototype.powerSave = function(choice){
-  if (choice === 'on'){
-    this.maximumTemperature = 25;
-  } else {
-    this.maximumTemperature = 32;
-  };
-}
-
-Thermostat.prototype.reset = function(){
-  return this.temperature = 20;
-}
-
-Thermostat.prototype.temperature = function() {
-  return 20;
-}
-
-Thermostat.prototype.turnUp = function() {
-  if (this.maximumTemperature === this.temperature) {
-    throw new Error("Maximum temperature reached, slut")
+  powerSave(choice) {
+    if (choice === 'on'){
+      this.maximumTemperature = 25;
+    } else {
+      this.maximumTemperature = 32;
+    };
   }
-  this.temperature++;
-  return this.temperature;
-}
 
-Thermostat.prototype.turnDown = function() {
-  if (this.minimumTemperature === this.temperature) {
-    throw new Error("Minimum temperature reached, bitch")
+  reset() {
+    return this.temperature = 20;
   }
-  this.temperature--;
-  return this.temperature;
+
+  turnUp() {
+    if (this.maximumTemperature === this.temperature) {
+      throw new Error("Maximum temperature reached, nugget")
+    }
+    this.temperature++;
+    return this.temperature;
+  }
+
+  turnDown() {
+    if (this.minimumTemperature === this.temperature) {
+      throw new Error("Minimum temperature reached, noodle")
+    }
+    this.temperature--;
+    return this.temperature;
+  }
+
+  saveData(temperature, city, powermode) {
+    console.log("heeeey");
+    $.post("http://localhost:4567/thermostat", { temperature: this.temperature, city: city, powermode: this.powermode } );
+  }
+
 }

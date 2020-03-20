@@ -1,27 +1,29 @@
 $(document).ready(function() {
 
-  let thermostat = new Thermostat;
-  changeValue(thermostat.temperature);
-  changeBackground();
+  let thermostat = new Thermostat();
+  let city = $('#current-city').val();
+  let temperature = thermostat.temperature;
+  let powermode = thermostat.powermode;
+  changeValue(temperature);
   $('#power_saving_mode_on').css("background-color", "green");
 
+  function onload() {
+    
+  }
+
   function displayWeather(city) {
-    var url = 'http://api.openweathermap.org/data/2.5/weather?q=';
-    var token = '&appid=09e89fd51851bbc9b7a1475aa2d18166';
-    var unit = '&units=metric';
+    let url = 'http://api.openweathermap.org/data/2.5/weather?q=';
+    let token = '&appid=09e89fd51851bbc9b7a1475aa2d18166';
+    let unit = '&units=metric';
     $.get(url + city + token + unit, function(data) {
     $('#currentWeather').text(data.main.temp);
     })
   }
 
   $('#current-city').change(function () {
-    var city = $('#current-city').val();
     displayWeather(city);
+    thermostat.saveData(temperature, city, powermode);
   });
-
-  function changeBackground() {
-    $('#energyUsage').attr('class', thermostat.energyUsage());
-  }
 
   function changeValue(num) {
     $("#temp_display").text(num);
@@ -30,13 +32,13 @@ $(document).ready(function() {
   $("#turn_up").click(function () {
     thermostat.turnUp();
     changeValue(thermostat.temperature);
-    changeBackground();
+    thermostat.saveData(temperature, city, powermode);
   });
 
   $("#turn_down").click(function() {
     thermostat.turnDown();
     changeValue(thermostat.temperature);
-    changeBackground();
+    thermostat.saveData(temperature, city, powermode);
   });
 
   $('#reset').click(function(){
@@ -44,18 +46,19 @@ $(document).ready(function() {
     changeValue(thermostat.temperature);
     $('#power_saving_mode_off').css("background-color", "white");
     $('#power_saving_mode_on').css("background-color", "green")
-    changeBackground();
   })
 
   $("#power_saving_mode_on").click(function() {
     thermostat.powerSave('on');
     $("#power_saving_mode_on").css("background-color", "green");
     $("#power_saving_mode_off").css("background-color", "white")
+    thermostat.saveData(temperature, city, powermode);
   });
 
   $("#power_saving_mode_off").click(function() {
     thermostat.powerSave('off');
     $("#power_saving_mode_off").css("background-color", "red")
     $("#power_saving_mode_on").css("background-color", "white");
+    thermostat.saveData(temperature, city, powermode);
   })
 })

@@ -1,27 +1,38 @@
 <html>
   <head>
+    <title> Thermostat </title>
     <script src="jquery-3.4.1.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Quicksand&display=swap" rel="stylesheet">
   </head>
-    <section id ="bg-image" class="medium-bg-image"></section>
+  <section id ="top-section">
+    <h1> Themistocles </h1>
+    <h2> The Digital Thermostat</h2>
+    </section>
+    <img src="thermostat.png" alt="Thermostat>">
+    <h1><span id="temp_display"></span></h1>
     <body>
-    <section class="bg-text">
-    <button id="turn_up">Turn Up</button>
-    <button id="turn_down">Turn Down</button>
-    <button id="power_saving_mode_on">Power Saving Mode On</button>
-    <button id="power_saving_mode_off">Power Saving Mode Off</button>
+    <section class="thermo-control">
+    <button id="turnDown">-</button>
+    <button id="turnUp">+</button>
+    <br>
+    <button id="power_saving_mode">Power Saving Mode</button>
+    <br>
     <button id="reset">Reset</button>
-
-    <p id="energyUsage">Power Saving Mode</p>
+    <p id="energyUsage">Energy Usage</p>
+    </section>
+    <section id ="weather">
     <h1>Current Weather <span id ="currentWeather"></span></h1>
+    <h2> Where am I? </h2>
       <select id="current-city">
          <option value="london">London</option>
          <option value="new+york">New York</option>
          <option value="paris">Paris</option>
          <option value="tokyo">Tokyo</option>
        </select>
-    <h1><span id="temp_display"></span></h1>
     </section>
-    <div><script src="interface.js"></script></div>
+    <script> const API = '<%= @api %>'; </script>
+    <div><script src="inter.js"></script></div>
     <div><script src="thermostat.js"></script></div>
   </body>
 </html>

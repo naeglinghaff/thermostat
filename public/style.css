@@ -1,0 +1,33 @@
+#top-section {
+  height: 20%;
+}
+
+#top-section::after {
+  position:absolute;
+    top: 18%;
+    left: 0px;
+    width: 100%;
+    content:" ";
+    background:
+  radial-gradient(circle at 50% 0%, #2D72B7 25%, #000 26%, transparent 0%);
+    background-color: transparent;
+    background-size:20px 40px;
+    height:50px;
+    background-repeat: repeat-x;
+    background-position: -25px 0px;
+}
+
+button {
+  padding: 10, 10 10, 10px;
+}
+
+img {
+  width: 100px;
+  height: auto;
+  padding: 10 10 10 10px;
+}
+
+body {
+  text-align: center;
+  font-family: 'Quicksand', sans-serif;
+}

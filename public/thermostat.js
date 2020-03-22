@@ -38,6 +38,7 @@ energyUsage() {
       throw new Error("Maximum temperature reached, nugget")
     }
     this.temperature++;
+    console.log("I'm turing up");
     return this.temperature;
   }
 
@@ -46,6 +47,7 @@ energyUsage() {
       throw new Error("Minimum temperature reached, noodle")
     }
     this.temperature--;
+    console.log("I'm turing down");
     return this.temperature;
   }
 

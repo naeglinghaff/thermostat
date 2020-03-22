@@ -1,11 +1,15 @@
 require 'sinatra/base'
 require 'json'
 require './lib/data'
+require 'dotenv'
+
+Dotenv.load
 
 class ThermostatApp < Sinatra::Base
   enable :sessions
 
   get '/' do
+    @api = ENV['API']
     erb :index
   end
 

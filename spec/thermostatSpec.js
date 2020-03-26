@@ -19,7 +19,7 @@ describe('Thermostat', () => {
     })
     it('throws error at min temp', () => {
       thermostat.temperature = 10;
-      expect( () => { thermostat.turnDown() }).toThrowError("Minimum temperature reached, bitch")
+      expect( () => { thermostat.turnDown() }).toThrowError("Minimum temperature reached")
     })
   })
 
@@ -31,7 +31,7 @@ describe('Thermostat', () => {
     it('raises error for max temp', () => {
       thermostat.powerSave('on');
       thermostat.temperature = 25;
-      expect(() => { thermostat.turnUp() }).toThrowError("Maximum temperature reached, slut")
+      expect(() => { thermostat.turnUp() }).toThrowError("Maximum temperature reached")
     })
   })
 

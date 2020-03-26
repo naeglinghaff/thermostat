@@ -35,29 +35,26 @@ energyUsage() {
 
   turnUp() {
     if (this.maximumTemperature === this.temperature) {
-      throw new Error("Maximum temperature reached, nugget")
+      throw new Error("Maximum temperature reached")
     }
     this.temperature++;
-    console.log("I'm turing up");
     return this.temperature;
   }
 
   turnDown() {
     if (this.minimumTemperature === this.temperature) {
-      throw new Error("Minimum temperature reached, noodle")
+      throw new Error("Minimum temperature reached")
     }
     this.temperature--;
-    console.log("I'm turing down");
     return this.temperature;
   }
 
   saveData(temperature, city, powermode) {
-    console.log("heeeey");
-    $.post("http://localhost:4567/thermostat", { temperature: this.temperature, city: city, powermode: this.powermode } );
+    $.post("http://localhost:9292/thermostat", { temperature: this.temperature, city: city, powermode: this.powermode } );
   }
 
   load(callback){
-    $.get("http://localhost:4567/thermostat", function(response) {
+    $.get("http://localhost:9292/thermostat", function(response) {
       var data = JSON.parse(response)
       callback(data);
     });

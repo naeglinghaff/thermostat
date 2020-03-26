@@ -20,7 +20,6 @@ class ThermostatApp < Sinatra::Base
   post '/thermostat' do
     temperature = params[:temperature]
     city = params[:city]
-    p city
     powermode = params[:powermode]
     Data.save_data(temperature, city, powermode)
   end

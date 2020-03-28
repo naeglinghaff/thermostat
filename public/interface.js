@@ -18,6 +18,7 @@ $(document).ready(function() {
 
   $('#current-city').change(function () {
     let city = $('#current-city').val();
+    $("#display-city").text(city);
     displayWeather(city);
     thermostat.saveData(temperature, city, powermode);
   });
@@ -49,20 +50,44 @@ $(document).ready(function() {
 
   $('#power_saving_mode').click(function() {
     let city = $('#current-city').val();
-    $('#power_saving_mode').css("background-color", "green");
+    let check = thermostat.powermode;
+    console.log(check);
+    let value = checkValue(check);
+    console.log(value);
+    thermostat.powerSave(value);
+    checkPowerMode();
     thermostat.saveData(temperature, city, powermode);
   });
+
+  function checkValue(check){
+    let value;
+    if (check === true) {
+      value = 'off';
+    } else if (check === false) {
+      value = 'on';
+    }
+    return value;
+  }
+
+  function checkPowerMode() {
+    if (thermostat.powermode === true) {
+      $('#power_saving_mode').css("background-color", "green");
+    } else if (thermostat.powermode === false){
+      $('#power_saving_mode').css("background-color", "white");
+    };
+  }
 
   function load() {
     thermostat.load(function (data) {
       thermostat.temperature = parseInt(data.temperature);
       $("#temp_display").text(thermostat.temperature);
       thermostat.powermode = data.powermode;
-      $("#power_saving_mode").css("background-color", "green");
       console.log(thermostat.powermode);
+      let city = data.city;
+      displayWeather(city)
+      $("#display-city").text(city);
     })
   }
 
   load();
-
 });

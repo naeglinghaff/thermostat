@@ -24,15 +24,18 @@ energyUsage() {
   powerSave(choice) {
     if (choice === 'on'){
       this.maximumTemperature = 25;
+      this.powermode = true;
     } else {
       this.maximumTemperature = 32;
+      this.powermode = false;
     };
+    return this.powermode;
   }
 
   reset() {
     return this.temperature = 20;
   }
-
+  
   turnUp() {
     if (this.maximumTemperature === this.temperature) {
       throw new Error("Maximum temperature reached")

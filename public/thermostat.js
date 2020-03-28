@@ -1,10 +1,12 @@
+'use strict';
+
 class Thermostat {
 
   constructor() {
   this.temperature = 20,
   this.minimumTemperature = 10,
   this.maximumTemperature = 25,
-  this.powermode = true,
+  this.powermode =true,
   this.energyLevel = 'medium-usage';
 }
 
@@ -35,7 +37,7 @@ energyUsage() {
   reset() {
     return this.temperature = 20;
   }
-  
+
   turnUp() {
     if (this.maximumTemperature === this.temperature) {
       throw new Error("Maximum temperature reached")

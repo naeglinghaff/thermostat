@@ -51,9 +51,7 @@ $(document).ready(function() {
   $('#power_saving_mode').click(function() {
     let city = $('#current-city').val();
     let check = thermostat.powermode;
-    console.log(check);
     let value = checkValue(check);
-    console.log(value);
     thermostat.powerSave(value);
     checkPowerMode();
     thermostat.saveData(temperature, city, powermode);
@@ -63,16 +61,17 @@ $(document).ready(function() {
     let value;
     if (check === true) {
       value = 'off';
-    } else if (check === false) {
+    } else {
       value = 'on';
     }
     return value;
   }
 
   function checkPowerMode() {
-    if (thermostat.powermode === true) {
+    let value = (thermostat.powermode);
+    if (value === true) {
       $('#power_saving_mode').css("background-color", "green");
-    } else if (thermostat.powermode === false){
+    } else if (value === false){
       $('#power_saving_mode').css("background-color", "white");
     };
   }
@@ -82,7 +81,7 @@ $(document).ready(function() {
       thermostat.temperature = parseInt(data.temperature);
       $("#temp_display").text(thermostat.temperature);
       thermostat.powermode = data.powermode;
-      console.log(thermostat.powermode);
+      checkPowerMode();
       let city = data.city;
       displayWeather(city)
       $("#display-city").text(city);

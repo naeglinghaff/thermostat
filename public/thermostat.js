@@ -36,6 +36,7 @@ energyUsage() {
 
   reset() {
     return this.temperature = 20;
+    return this.powermode = true;
   }
 
   turnUp() {

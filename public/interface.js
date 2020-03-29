@@ -4,8 +4,9 @@ $(document).ready(function() {
 
   let thermostat = new Thermostat();
   let temperature = thermostat.temperature;
-  changeValue(temperature);
   let powermode = thermostat.powermode;
+  console.log(thermostat.powermode);
+  changeValue(temperature);
 
   function displayWeather(city) {
     let url = 'http://api.openweathermap.org/data/2.5/weather?q=';
@@ -44,14 +45,16 @@ $(document).ready(function() {
   $('#reset').click(function(){
     let city = $('#current-city').val();
     changeValue(thermostat.reset());
-    $('#power_saving_mode').css("background-color", "green");
+    checkPowerMode();
     thermostat.saveData(temperature, city, powermode);
   })
 
   $('#power_saving_mode').click(function() {
     let city = $('#current-city').val();
     let check = thermostat.powermode;
+    console.log(check);
     let value = checkValue(check);
+    console.log(value);
     thermostat.powerSave(value);
     checkPowerMode();
     thermostat.saveData(temperature, city, powermode);
@@ -70,9 +73,9 @@ $(document).ready(function() {
   function checkPowerMode() {
     let value = (thermostat.powermode);
     if (value === true) {
-      $('#power_saving_mode').css("background-color", "green");
+      $('#power_saving_mode').attr('class', "on");
     } else if (value === false){
-      $('#power_saving_mode').css("background-color", "white");
+      $('#power_saving_mode').attr('class', "off");
     };
   }
 
@@ -82,6 +85,7 @@ $(document).ready(function() {
       $("#temp_display").text(thermostat.temperature);
       thermostat.powermode = data.powermode;
       checkPowerMode();
+      console.log(thermostat.powermode);
       let city = data.city;
       displayWeather(city)
       $("#display-city").text(city);

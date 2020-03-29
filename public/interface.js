@@ -5,8 +5,6 @@ $(document).ready(function() {
   let thermostat = new Thermostat();
   let temperature = thermostat.temperature;
   let powermode = thermostat.powermode;
-  console.log(thermostat.powermode);
-  changeValue(temperature);
 
   function displayWeather(city) {
     let url = 'http://api.openweathermap.org/data/2.5/weather?q=';
@@ -52,9 +50,7 @@ $(document).ready(function() {
   $('#power_saving_mode').click(function() {
     let city = $('#current-city').val();
     let check = thermostat.powermode;
-    console.log(check);
     let value = checkValue(check);
-    console.log(value);
     thermostat.powerSave(value);
     checkPowerMode();
     thermostat.saveData(temperature, city, powermode);
@@ -83,9 +79,8 @@ $(document).ready(function() {
     thermostat.load(function (data) {
       thermostat.temperature = parseInt(data.temperature);
       $("#temp_display").text(thermostat.temperature);
-      thermostat.powermode = data.powermode;
+      thermostat.powermode = data.powermode
       checkPowerMode();
-      console.log(thermostat.powermode);
       let city = data.city;
       displayWeather(city)
       $("#display-city").text(city);
@@ -93,4 +88,5 @@ $(document).ready(function() {
   }
 
   load();
+  changeValue(temperature);
 });
